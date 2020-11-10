@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rx.Kql", "Rx.Kql\Rx.Kql.csproj", "{8062168C-7623-4D7B-B075-8AE826D88554}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rx.Kql.UnitTests", "Rx.Kql.UnitTests\Rx.Kql.UnitTests.csproj", "{AEE84508-B390-40EB-8779-18D4BC155D1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Debug|x64.Build.0 = Debug|Any CPU
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Release|x64.ActiveCfg = Release|Any CPU
+		{8062168C-7623-4D7B-B075-8AE826D88554}.Release|x64.Build.0 = Release|Any CPU
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Debug|x64.ActiveCfg = Debug|x64
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Debug|x64.Build.0 = Debug|x64
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Release|x64.ActiveCfg = Release|x64
+		{AEE84508-B390-40EB-8779-18D4BC155D1C}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3805DB70-EC3F-4D3C-A7CE-FC89532607FC}
+	EndGlobalSection
+EndGlobal
