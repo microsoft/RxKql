@@ -248,5 +248,10 @@ namespace System.Reactive.Kql
         {
             return node.Expression.Visit(this);
         }
+
+        public override ScalarValue VisitProjectAwayOperator(Kusto.Language.Syntax.ProjectAwayOperator node)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

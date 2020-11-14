@@ -511,11 +511,6 @@ namespace System.Reactive.Kql
             throw new NotImplementedException();
         }
 
-        public override T VisitPathExpression(PathExpression node)
-        {
-            throw new NotImplementedException();
-        }
-
         public override T VisitPatternDeclaration(PatternDeclaration node)
         {
             throw new NotImplementedException();
@@ -557,11 +552,6 @@ namespace System.Reactive.Kql
         }
 
         public override T VisitPrintOperator(PrintOperator node)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override T VisitProjectAwayOperator(ProjectAwayOperator node)
         {
             throw new NotImplementedException();
         }

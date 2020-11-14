@@ -1,0 +1,7 @@
+// MSFT is high
+StockTickers 
+| where Symbol == "MSFT" and Price > 80
+
+// MSFT is low
+StockTickers 
+| where Symbol == "MSFT" and Price < 10

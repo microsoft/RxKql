@@ -25,9 +25,20 @@ namespace System.Reactive.Kql
             return node.Expressions.Select(e => e.Element.Visit(visitor)).ToList();
         }
 
+        public override List<RxKqlScalarValue> VisitProjectAwayOperator(Kusto.Language.Syntax.ProjectAwayOperator node)
+        {
+            var visitor = new RxKqlScalarValueConverter();
+            return node.Expressions.Select(e => e.Element.Visit(visitor)).ToList();
+        }
+
         public override List<RxKqlScalarValue> VisitExpressionStatement(ExpressionStatement node)
         {
             return node.Expression.Visit(this);
+        }
+
+        public override List<RxKqlScalarValue> VisitPathExpression(PathExpression node)
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -60,6 +71,20 @@ namespace System.Reactive.Kql
                 Left = $"Column{++NamelessCounter}",
                 Right = node.Visit(new ScalarValueConverter())
             };
+        }
+
+        public override RxKqlScalarValue VisitPathExpression(PathExpression node)
+        {
+            return new RxKqlScalarValue
+            {
+                Left = node.ToString().Trim().Replace(" . ", "_"),
+                Right = node.Visit(new ScalarValueConverter())
+            };
+        }
+
+        public override RxKqlScalarValue VisitProjectAwayOperator(Kusto.Language.Syntax.ProjectAwayOperator node)
+        {
+            throw new NotImplementedException();
         }
     }
 }

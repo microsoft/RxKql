@@ -1,0 +1,3 @@
+// Some stock has a high price
+StockTickers 
+| where Price > 80
