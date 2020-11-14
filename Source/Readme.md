@@ -149,5 +149,5 @@ All the event processing happens on the stream. No events are ever stored, and t
 
 See also:
 
-- The code of this [WinForm application](../../RxKustoMouseMove/Form1.cs)
-- The original [sample of Rx](https://github.com/Microsoft/Tx/tree/master/Samples/RxWinforms/Readme.md)
+- Click to discover -> [Rx.Kql.MouseMoveSample](../Rx.Kql.MouseMove/Rx.Kql.MouseMove.Readme.md)
+- Click to discover -> [Rx.Kql.NodeSample](../Rx.Kql.NodeSample/Rx.Kql.NodeSample.Readme.md)
