@@ -9,6 +9,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rx.Kql.MouseMove", "Rx.Kql.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rx.Kql.NodeSample", "Rx.Kql.NodeSample\Rx.Kql.NodeSample.csproj", "{95DD8382-F36D-44B4-93DA-9C375BE6F837}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{210B014E-29CD-4821-9615-4B67EACBE637}"
+	ProjectSection(SolutionItems) = preProject
+		AbstractSyntaxTree.JPG = AbstractSyntaxTree.JPG
+		AnySymbolQueries.csl = AnySymbolQueries.csl
+		KqlMouseMove.JPG = KqlMouseMove.JPG
+		KqlNode.JPG = KqlNode.JPG
+		MsftQueries.csl = MsftQueries.csl
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{10C5E763-CE28-4AD2-8B71-0C4E78D18FE7}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +60,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8062168C-7623-4D7B-B075-8AE826D88554} = {210B014E-29CD-4821-9615-4B67EACBE637}
+		{6D870437-87F8-4806-8F95-8FAEBB9EB540} = {210B014E-29CD-4821-9615-4B67EACBE637}
+		{95DD8382-F36D-44B4-93DA-9C375BE6F837} = {210B014E-29CD-4821-9615-4B67EACBE637}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3805DB70-EC3F-4D3C-A7CE-FC89532607FC}
