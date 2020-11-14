@@ -149,5 +149,5 @@ All the event processing happens on the stream. No events are ever stored, and t
 
 See also:
 
-- Click to discover -> [Rx.Kql.MouseMoveSample](../Rx.Kql.MouseMove/Rx.Kql.MouseMove.Readme.md)
-- Click to discover -> [Rx.Kql.NodeSample](../Rx.Kql.NodeSample/Rx.Kql.NodeSample.Readme.md)
+- Click to discover -> [Rx.Kql.MouseMoveSample](/Rx.Kql.MouseMove/Rx.Kql.MouseMove.Readme.md)
+- Click to discover -> [Rx.Kql.NodeSample](/Rx.Kql.NodeSample/Rx.Kql.NodeSample.Readme.md)
