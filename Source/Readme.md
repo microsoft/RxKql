@@ -86,7 +86,7 @@ Which does random stock ticker generation. Some of the tickers match the above q
 	// MSFT is high
 	// MSFT is low MSFT 2
 
-Note that the random generation here is not intended to simulate actual stock market behavior. It is simply generating random symbol and random price from 0 to 99. See the entire code in [Program.cs](Program.cs)
+Note that the random generation here is not intended to simulate actual stock market behavior. It is simply generating random symbol and random price from 0 to 99. See the entire code in [Program.cs](Rx.Kql/Program.cs)
 
 ### Using KQL functions in real-time queries
 Sometimes, many queries have fragment that is the same. In actual Kusto (stored data) we can take such code, and encapsulate it in reusable function.
@@ -149,5 +149,5 @@ All the event processing happens on the stream. No events are ever stored, and t
 
 See also:
 
-- Click to discover -> [Rx.Kql.MouseMoveSample](/Rx.Kql.MouseMove/Rx.Kql.MouseMove.Readme.md)
-- Click to discover -> [Rx.Kql.NodeSample](/Rx.Kql.NodeSample/Rx.Kql.NodeSample.Readme.md)
+- Click to discover -> [Rx.Kql.MouseMoveSample](Rx.Kql.MouseMove/Rx.Kql.MouseMove.Readme.md)
+- Click to discover -> [Rx.Kql.NodeSample](Rx.Kql.NodeSample/Rx.Kql.NodeSample.Readme.md)
