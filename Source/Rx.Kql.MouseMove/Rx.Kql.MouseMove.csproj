@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <LangVersion>7.1</LangVersion>
-    <TargetFramework>net462</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <RuntimeIdentifiers>win7-x64;win7-x86;win10-x64;win10-x86</RuntimeIdentifiers>
     <Version>3.0.1</Version>
     <Platforms>AnyCPU</Platforms>
