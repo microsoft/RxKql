@@ -170,7 +170,7 @@ namespace System.Reactive.Kql
             }
 
             var syntax = query.Syntax.GetDescendants<Statement>()[0];
-            return syntax.Visit(new ScalarValueConverter());
+            return syntax.Accept(new ScalarValueConverter());
         }
 
         public bool Evaluate(IDictionary<string, object> evt)
@@ -219,7 +219,7 @@ namespace System.Reactive.Kql
             }
 
             var syntax = query.Syntax.GetDescendants<Statement>()[0];
-            return syntax.Visit(new ListRxKqlScalarValueConverter());
+            return syntax.Accept(new ListRxKqlScalarValueConverter());
         }
 
         public ProjectOperator(string args)
@@ -313,7 +313,7 @@ namespace System.Reactive.Kql
             }
 
             var syntax = query.Syntax.GetDescendants<Statement>()[0];
-            return syntax.Visit(new ListRxKqlScalarValueConverter());
+            return syntax.Accept(new ListRxKqlScalarValueConverter());
         }
 
         public ProjectAwayOperator(string args)
@@ -401,7 +401,7 @@ namespace System.Reactive.Kql
             }
 
             var syntax = query.Syntax.GetDescendants<Statement>()[0];
-            return syntax.Visit(new ListRxKqlScalarValueConverter());
+            return syntax.Accept(new ListRxKqlScalarValueConverter());
         }
 
         public ProjectKeepOperator(string args)
@@ -476,7 +476,7 @@ namespace System.Reactive.Kql
             }
 
             var syntax = query.Syntax.GetDescendants<Statement>()[0];
-            Expression = syntax.Visit(new ScalarValueConverter()) as ScalarFunction;
+            Expression = syntax.Accept(new ScalarValueConverter()) as ScalarFunction;
         }
 
         public override string ToString()
@@ -538,7 +538,7 @@ namespace System.Reactive.Kql
             }
 
             var syntax = query.Syntax.GetDescendants<Statement>()[0];
-            return syntax.Visit(new ListRxKqlScalarValueConverter());
+            return syntax.Accept(new ListRxKqlScalarValueConverter());
         }
 
         public ExtendOperator(string args)

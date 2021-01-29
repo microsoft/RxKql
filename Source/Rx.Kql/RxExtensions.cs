@@ -34,7 +34,7 @@ namespace System.Reactive.Kql
                 var queryStatement = statementList.FirstOrDefault(x => x.Kind == SyntaxKind.ExpressionStatement);
             }
 
-            var lexicalTokens = KustoLexer.GetTokens(query, alwaysProduceEOF: true);
+            var lexicalTokens = LexicalGrammar.GetTokens(query, alwaysProduceEndToken: true);
             string[] pipeline = SplitExpressions(lexicalTokens).ToArray();
             var result = source;
 
