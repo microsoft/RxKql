@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rx.Kql\Rx.Kql.csproj" />
+    <ProjectReference Include="..\..\Source\Rx.Kql\Rx.Kql.csproj" />
   </ItemGroup>
 
   <ItemGroup>
