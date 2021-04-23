@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.IO;
 using System.Reactive.Kql;
-using System.Reflection;
+using System.Reactive.Kql.CustomTypes;
+using System.Reactive.Linq;
 using System.Threading;
 
 namespace RxKqlNodeSample
@@ -15,38 +14,37 @@ namespace RxKqlNodeSample
 
         static void Main()
         {
-            string directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            DirectoryInfo dir_info = new DirectoryInfo(directoryName);
+            // Generate infinite, real-time stream of stock quotes
+            var quotes = StockQuotes().ToObservable();
 
-            KqlNode node = new KqlNode();
+            // Evaluate multiple queries on the stream
+            KqlNodeHub hub = KqlNodeHub.FromFiles(
+                quotes, PrintOutput, "quotes", "MsftQueries.csl", "AnySymbolQueries.csl");
 
-            node.AddCslFile(Path.Combine(dir_info.FullName, @"MsftQueries.csl"));
-            node.AddCslFile(Path.Combine(dir_info.FullName, @"AnySymbolQueries.csl"));
-
-            using (node.Subscribe(alert => Console.WriteLine("{0} {1} {2}", 
-                alert.Comment.Trim('\n','\r','\t',' '),
-                alert.Output["Symbol"],
-                alert.Output["Price"])))
-            {
-                while (true)
-                {
-                    var ticker = GenerateTicker();
-                    node.OnNext(ticker);
-                    Thread.Sleep(10);
-                }
-            }
+            Console.ReadLine();
+        }
+        static void PrintOutput(KqlOutput output)
+        {
+            Console.WriteLine("{0} {1} {2}",
+                output.Comment.Trim('\n', '\r', '\t', ' '),
+                output.Output["Symbol"],
+                output.Output["Price"]);
         }
 
-        static IDictionary<string, object> GenerateTicker()
+        static IEnumerable<IDictionary<string, object>> StockQuotes()
         {
-            int index = _random.Next(_symbols.Length);
-            int price = _random.Next(100);
+            while(true)
+            {
+                int index = _random.Next(_symbols.Length);
+                int price = _random.Next(100);
 
-            dynamic ticker = new ExpandoObject();
-            ticker.Symbol = _symbols[index];
-            ticker.Price = price;
-
-            return ticker;
+                var ticker = new Dictionary<string, object>();
+                ticker.Add("Symbol", _symbols[index]);
+                ticker.Add("Price", price);
+                
+                Thread.Sleep(10);
+                yield return ticker;
+            }
         }
     }
 }
