@@ -1,74 +1,41 @@
-# The Rx.Kql.MouseMove Sample
+# Mouse move events sample
 
-&copy; Microsoft. All rights reserved.
+This sample makes the point how Rx.KQL works in-memory, without need to "store" events at all. To illustrate the concept, we are on purpose using events that are not intended to be stored - the mouse move events in a local WinForms application.
 
-Rx.Kql.MouseMove is a simple Windows Forms application that demonstrates how to use an "Embedded Query" to gather and process mouse events. The application captures these events and draws dots on the canvas, green dots for the left mouse button press, gold for the right mouse button.
+The most interesitng piece of the code is: 
 
-The sample application uses the System.Reactive.Linq NuGet Package. For more information, see the [Reactive.Linq SDK](https://github.com/dotnet/reactive).  And it uses the System.Reactive.Kql NuGet Package. For more information, see the [Reactive.Kql SDK](https://github.com/dotnet/reactive).
-
-## Exploring the Sample
-
-The sample uses the System.Reactive.Linq `Observable` class's `FromEventPattern` method to capture the mouse move and button events. The System.Reactive.Linq RxExtensions `KustoQuery` method is used to filter the event stream to only grab left mouse button events, or right mouse events, depending upon which one is pressed.
-
-This is the code for tracking left mouse move events:
-
-``` csharp
+```cs
 var leftButtonEvents = Observable.FromEventPattern<MouseEventArgs>(panel1, "MouseMove")
     .ToDynamic(m => m.EventArgs)
     .KustoQuery("where Button == \"Left\" | project X, Y");
 ```
-The can be diagramed like this:
+Here:
+- The form produces mouse move events, which can be used by adding a delegate like `panel1.MouseMove += SomeMethod;` where the method has signature `SomeMethod(Object sender, MouseEventArgs)`
+- The Reactive factory method `FromEventPattern` converts this into `IObservable<MouseEventArgs>` which allows the user to define push-LINQ query using huge set of Rx stream-processing operators such as Joins, Grouping, etc.
+- But since we want to do KQL instead, we use `ToDynamic()` which converts each event from static class into `IDictionary<string, object>`. This allows the KQL queries to change the schema on every stage of the pipeline, without need to keep static classes.
+- Finally we do `.KustoQuery(...)` which
+    - Discards the events unless the left button is pressed
+    - If it is pressed, takes just X and Y coordinates
+
+Executing the code results in building in-memory push pipeline like this:
 
 ![MouseMove3.JPG](Docs/MouseMove3.jpg)
 
-It then uses the System.Reactive.Kql RxExtensions `Subscribe` method to register the events to an observable sequence.
+The output of this pipeline is wired into a method which draws a small rectangle for each event. Here is a **TODO: recorded demo** or you can run teh sample yourself:
 
-``` csharp
-_subscriptions.Add(leftButtonEvents.Subscribe(p =>
-{
-    panel1.CreateGraphics().FillRectangle(leftButtonPen.Brush, float.Parse(p["X"].ToString()), float.Parse(p["Y"].ToString()), 5, 5);
-    ;
-    leftButtonTextBox.Text = $@"Left: {leftButtonCounter++}";
-    noButtonTextBox.Text = $@"Moves: {noButtonCounter++}";
-}));
-```
+- run the project MouseMove
+- move the mouse without pressing teh buttons - nothing happens because events are ignored by the `where` clause
+- hold the left button and draw some picture. Notice there is no delay: the pixels show up in microseconds from the moment you moved the mouse 
 
-The same is done for the right mouse button and mouse move events stream. This is an embedded query using the Kusto language on real-time feed of events. The x and y coordinates are displayed in the upper right corner of the application.
+Now let's illustrate the point of never storing the events. In WinForms, it is usually the responsibility of the developer to keep information about the picture, and re-draw it when the window is re-sized or loses and re-acquires focus.
 
-This way, as the mouse is moved, the mouse move events stream in real-time to the output application as a series of colored dots.
+But here we did not do any of this! Try re-sizing the window and notice how it deletes the picture.
 
-The input is real-time feed of mouse events, **without the data being stored first**. This is fundamentally different than real Kusto usage in which the data has to be stored first.
+In this sample, we assumed the developer understands Reactive Extensions, which is a high bar. One needs to learn lambda expressions, anonymous methods, etc. It is also easy to introduce a bug - e.g. by not keeping the `IDispossable` which is returned by `Subscribe `. In a production system this means the query will suddenly stop working when the `IDisposeable` instance is garbage-collected.
 
-These Mouse-Move events originally come as instances of strongly typed class. The  `ToDynamic` extension method converts the strongly-typed events into name-value dynamic objects.
+To make life simpler, Rx.KQL introduces high level wrapper which hides the complexity. See the [Multi-Query sample](../MultiQuery/Readme.md).
 
-Next the sample code performs a Kusto-like pipeline of filter and projection. Because the query is simple filter and transform, no events are kept in memory. Subset of the events is propagated to the drawing callback and once a point is drown are discarded. This way it works on infinitely long stream of events.
+## See also
 
-This is similar to Reactive Extensions (Rx .Net) and the [original Rx sample](https://github.com/Microsoft/Tx/blob/master/Samples/RxWinforms/Readme.md) on mouse move events.
-
-## Similarities with LINQ
-
-The main similarity is that the query was defined in-line in the C# code. It does the same as .Where and .Select pipeline in the [original Rx sample](https://github.com/Microsoft/Tx/blob/master/Samples/RxWinforms/Readme.md)
-
-It is also compose-able as a pipeline, only using | instead of . notation.
-
-## Differences from LINQ
-
-Embedded queries have no knowledge of the C# context they are executed in. No access to functions and extension methods, no access to variables in scope etc.
-
-Because the query is just a string it can also come from configuration or user input and can be changed without recompiling the code.
-
-The usage of dynamic types makes queries less efficient than using statically-typed classes.
-
-Finally, there is no comprehension (SQL-like) syntax. Once you learn the pipeline principles behind LINQ or Kusto languages it is actually simpler than comprehension for nested queries.
-
-## Compose-ability
-
-As you can see from the sample, the Kusto-like query was just one operator in LINQ-Rx pipeline of Observables.
-
-This is possible because we only support small subset of the Kusto language (no joins, no graphics etc.). It is just a pipeline that takes dynamic objects and produces dynamic objects. This is classic example of "Function" which fits as a LINQ Verb.
-
-## See Also
-
-[Rx.Kql Node Sample](../Rx.Kql.NodeSample/Rx.Kql.NodeSample.Readme.md)
-
-[CDOC Samples](../../CDOC.Samples.Readme.md)
+- The [Multi-Query sample](../MultiQuery/Readme.md) for Rx.KQL
+- The original [Mouse Move sample](http://github.com/microsoft/Tx/tree/master/Samples/RxWinforms) for Reactive Extensions (Rx.Net)
