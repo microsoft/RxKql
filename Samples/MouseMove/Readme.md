@@ -2,7 +2,7 @@
 
 This sample makes the point how Rx.KQL works in-memory, without need to "store" events at all. To illustrate the concept, we are on purpose using events that are not intended to be stored - the mouse move events in a local WinForms application.
 
-The most interesitng piece of the code is: 
+The most interesitng piece of [the code](Form1.cs) is: 
 
 ```cs
 var leftButtonEvents = Observable.FromEventPattern<MouseEventArgs>(panel1, "MouseMove")
