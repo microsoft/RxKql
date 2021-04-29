@@ -15,11 +15,11 @@ namespace RxKqlNodeSample
         static void Main()
         {
             // Generate infinite, real-time stream of stock quotes
-            var quotes = StockQuotes().ToObservable();
+            IObservable<IDictionary<string, object>> quotes = StockQuotes().ToObservable();
 
             // Evaluate multiple queries on the stream
             KqlNodeHub hub = KqlNodeHub.FromFiles(
-                quotes, PrintOutput, "quotes", "MsftQueries.csl", "AnySymbolQueries.csl");
+                quotes, PrintOutput, "quotes", "MsftQueries.kql", "AnySymbolQueries.kql");
 
             Console.ReadLine();
         }

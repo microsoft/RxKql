@@ -11,6 +11,18 @@
     <AssemblyName>RxKqlNodeSample</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="AnySymbolQueries.kql" />
+    <None Remove="MsftQueries.kql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AnySymbolQueries.kql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MsftQueries.kql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Source\Rx.Kql\Rx.Kql.csproj" />
   </ItemGroup>
 
