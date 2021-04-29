@@ -53,10 +53,10 @@ static void PrintOutput(KqlOutput output)
 
 Here:
 - The `Comment` property contains the comments such as `// MSFT is high`
-- The Output property is the event that passed through. In this example there were only filters, so teh schema is not changing, but if there were `project`, `extend`, `summarize` etc. the schema may be different on output. See the list of [supported](SupportedFunctions.md) operators and functions.
-- There is also a `Query` property, which has teh text of the query that produced the output
+- The Output property is the event that passed through. In this example there were only filters, so the schema is not changing, but if there were `project`, `extend`, `summarize` etc. statements in the query, the schema may be different on output. See the list of [supported](SupportedFunctions.md) operators and functions.
+- There is also a `Query` property, which has the text of the query that produced the output
 
-Finally, in most real applications we expect to have existing IObservable that represents the stream. Here for teh sake of example we construct the stream in two steps:
+Finally, in most real applications we expect to have existing IObservable that represents the stream. Here for the sake of example we construct the stream in two steps:
 
 1: Create infinite IEnumerable sequence of tickers:
 ```cs
@@ -87,7 +87,7 @@ static IEnumerable<IDictionary<string, object>> StockQuotes()
     StockQuotes().ToObservable();
 ```
 ## Performance and scale considerations
-Major advantage of the real-time queries is that we can have large number of queries that are running simultaneously.
+The major advantage of real-time queries is that we can have a large number of queries that are running simultaneously.
 
 The performance of Rx.Net for simple operations is about 10 million events per second on a single CPU core. This means the evaluation of a simple step like a `where` takes 0.1 microseconds. Evaluation of more complex primitives like `summarize` may be expensive. Let's assume it is a whole millisecond. 
 

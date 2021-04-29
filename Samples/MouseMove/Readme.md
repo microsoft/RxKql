@@ -21,10 +21,10 @@ Executing the code results in building in-memory push pipeline like this:
 
 ![MouseMove3.JPG](Docs/MouseMove3.jpg)
 
-The output of this pipeline is wired into a method which draws a small rectangle for each event. Here is a **TODO: recorded demo** or you can run teh sample yourself:
+The output of this pipeline is wired into a method which draws a small rectangle for each event. Here is a **TODO: recorded demo** or you can run the sample yourself:
 
 - run the project MouseMove
-- move the mouse without pressing teh buttons - nothing happens because events are ignored by the `where` clause
+- move the mouse without pressing the buttons - nothing happens because events are ignored by the `where` clause
 - hold the left button and draw some picture. Notice there is no delay: the pixels show up in microseconds from the moment you moved the mouse 
 
 Now let's illustrate the point of never storing the events. In WinForms, it is usually the responsibility of the developer to keep information about the picture, and re-draw it when the window is re-sized or loses and re-acquires focus.
