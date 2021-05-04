@@ -4,13 +4,14 @@
     <TargetFrameworks>netcoreapp3.1;net472</TargetFrameworks>
     <Platforms>AnyCPU</Platforms>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <RepositoryUrl>https://msazure.visualstudio.com/One/_git/SecEng-Dev-SIEMfx</RepositoryUrl>
-    <Platforms>AnyCPU</Platforms>
-    <Authors>C+E Security Infra SecEng Dev</Authors>
-    <Description>Library for executing Kusto queries on live streams of data</Description>
-    <PackageReleaseNotes>Library for executing Kusto queries on live streams of data</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/microsoft/RxKql</RepositoryUrl>
+    <Authors>Microsoft</Authors>
+    <Description>Library for executing Kusto-Azure Data Explorer queries on live streams of data</Description>
+    <PackageReleaseNotes>Library for executing Kusto-Azure Data Explorer queries on live streams of data</PackageReleaseNotes>
     <PackageTags>Rx.Kql</PackageTags>
-    <Version>3.4.2</Version>
+    <Version>3.5.1</Version>
+    <Id>Microsoft.Rx.Kql</Id>
+    <AssemblyName>Microsoft.Rx.Kql</AssemblyName>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
