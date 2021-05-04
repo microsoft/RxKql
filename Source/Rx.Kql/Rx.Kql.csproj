@@ -15,6 +15,7 @@
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <ApplicationIcon>rxpublic.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(CdpxPostSigning)' == 'true' ">
