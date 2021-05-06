@@ -42,11 +42,4 @@
     <PackageReference Include="Tx.Windows" Version="3.0.6" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <KeyFile>..\35MSSharedLib1024.snk</KeyFile>
-    <AssemblyOriginatorKeyFile>..\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
 </Project>
