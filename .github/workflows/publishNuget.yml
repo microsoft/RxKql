@@ -1,0 +1,73 @@
+# Workflow to build, sign, compress, and publish a nuget package
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    runs-on: windows-latest
+
+    env:
+      Package_Name: Microsoft.Rx.Kql                                 # Replace with name of your nuget package
+      Package_Project_Path: RxKql\Source\Rx.Kql\Rx.Kql.csproj            # Replace with path to your nuget project
+      Identity_Mapper: "namita-prakash:${{ secrets.NAPRAKAS_NUGET_API_KEY }};rbiles:${{ secrets.CDOCEngApiKeyRBiles }};" # Add mapping from your github username to your nuget api key secret
+
+    defaults:
+      run:
+        shell: powershell
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Get tag name for new release
+    - name: Get Tag and Release Names
+      run: |
+        $tmp = "${{ github.ref }}".split('/')
+        $tag = $tmp[$tmp.length-1]
+        $release = $env:Package_Name + " " + $tag
+        echo "TAG_NAME=$tag" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        echo "RELEASE_NAME=$release" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+    # Publish binaries for each target runtime
+    - name: Pack Project
+      run: |
+        dotnet clean $env:Package_Project_Path
+        dotnet nuget locals all --clear
+        dotnet pack $env:Package_Project_Path -p:PackageVersion=$env:TAG_NAME -c Release -o "${{ runner.temp }}\NugetPackage"
+        dir "${{ runner.temp }}\NugetPackage"
+
+    # Sign binaries
+    - name: Sign Binaries
+      uses: ./Actions/SignNugetAction
+      with:
+        certificate: ${{ secrets.BASE64_ENCODED_PFX }}
+        key: ${{ secrets.PFX_KEY }}
+        directory: '${{ runner.temp }}\NugetPackage'
+
+    # Upload compressed binaries to latest release
+    - name: Create Release
+      uses: ./Actions/CreateReleaseAction
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: ${{ env.TAG_NAME }}
+        release_name: ${{ env.RELEASE_NAME }}
+        directory: '${{ runner.temp }}\NugetPackage'
+
+    # Set nuget api key
+    - name: Set nuget api key
+      run: |
+        $ids = $env:Identity_Mapper -split ";"
+        $mapper = New-Object System.Collections.Generic.Dictionary"[String,String]"
+        foreach ($id in $ids) { $pair = $id -split ":"; $mapper.Add($pair[0],$pair[1]) }
+        $key = $mapper["${{ github.actor }}"]
+        echo "NUGET_API_KEY=$key" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+    
+    # Upload nuget package to nuget.org
+    - name: Publish Package
+      run: |
+        cd "${{ runner.temp }}\NugetPackage"
+        dotnet nuget push *.nupkg --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json
