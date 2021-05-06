@@ -12,7 +12,7 @@ jobs:
 
     env:
       Package_Name: Microsoft.Rx.Kql                                 # Replace with name of your nuget package
-      Package_Project_Path: RxKql\Source\Rx.Kql\Rx.Kql.csproj            # Replace with path to your nuget project
+      Package_Project_Path: Source\Rx.Kql\Rx.Kql.csproj            # Replace with path to your nuget project
       Identity_Mapper: "namita-prakash:${{ secrets.NAPRAKAS_NUGET_API_KEY }};rbiles:${{ secrets.CDOCEngApiKeyRBiles }};" # Add mapping from your github username to your nuget api key secret
 
     defaults:
