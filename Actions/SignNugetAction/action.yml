@@ -1,0 +1,15 @@
+name: 'Sign Nuget Action'
+description: 'Sign code using nuget sign'
+inputs:
+  certificate:
+    description: 'Base64-encoded certificate'
+    required: true
+  key:
+    description: 'Key for certificate'
+    required: true
+  directory:
+    description: 'Directory with nuget package to sign'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

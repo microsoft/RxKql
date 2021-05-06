@@ -39,6 +39,7 @@
     <PackageReference Include="System.Data.HashFunction.xxHash" Version="2.0.0" />
     <PackageReference Include="System.Reactive.Linq" Version="4.0.0" />
     <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+    <PackageReference Include="Tx.Windows" Version="3.0.6" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
