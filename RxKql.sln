@@ -4,6 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{76E27F7C-8F73-4922-B520-20126D7C78B9}"
+	ProjectSection(SolutionItems) = preProject
+		Source\AbstractSyntaxTree.JPG = Source\AbstractSyntaxTree.JPG
+		Source\AnySymbolQueries.csl = Source\AnySymbolQueries.csl
+		Source\KqlMouseMove.JPG = Source\KqlMouseMove.JPG
+		Source\KqlNode.JPG = Source\KqlNode.JPG
+		Source\MsftQueries.csl = Source\MsftQueries.csl
+		Source\Readme.md = Source\Readme.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rx.Kql", "Source\Rx.Kql\Rx.Kql.csproj", "{8A1AD66E-16EE-4C17-8059-9BB9F60EFDAC}"
 EndProject

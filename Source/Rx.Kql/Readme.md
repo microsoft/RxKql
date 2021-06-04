@@ -38,4 +38,4 @@ var points = Observable.FromEventPattern<MouseEventArgs>(panel1, "MouseMove")
 - ToDynamic converts instances of static types to isomorphic "dynamic" representation. 
 - KustoQuery evaluates a query on the live-stream of dynamic instances
 
-See the WinForms [sample on mouse move events](\src\Samples\Rx.Kql.MouseMove\Readme.md).
+See the WinForms [sample on mouse move events](\Source\Samples\Rx.Kql.MouseMove\Readme.md).
