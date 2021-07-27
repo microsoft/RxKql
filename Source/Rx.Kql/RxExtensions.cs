@@ -30,12 +30,11 @@ namespace System.Reactive.Kql
             if (kq.Syntax.GetDescendants<Statement>().Count > 1)
             {
                 var statementList = kq.Syntax.GetDescendants<Statement>().ToList();
-
                 var letStatements = statementList.Where(x => x.Kind == SyntaxKind.LetStatement);
                 var queryStatement = statementList.FirstOrDefault(x => x.Kind == SyntaxKind.ExpressionStatement);
             }
 
-            var lexicalTokens = LexicalGrammar.GetTokens(query, alwaysProduceEndToken: true);
+            var lexicalTokens = TokenParser.ParseTokens(query, alwaysProduceEndToken: true);
             string[] pipeline = SplitExpressions(lexicalTokens).ToArray();
             var result = source;
 

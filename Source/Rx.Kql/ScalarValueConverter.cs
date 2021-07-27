@@ -389,5 +389,25 @@ namespace System.Reactive.Kql
         {
             throw new NotImplementedException();
         }
+
+        public override ScalarValue VisitHasAllExpression(HasAllExpression node)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ScalarValue VisitEvaluateSchemaClause(EvaluateSchemaClause node)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ScalarValue VisitNameReferenceList(NameReferenceList node)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ScalarValue VisitContextualDataTableExpression(ContextualDataTableExpression node)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

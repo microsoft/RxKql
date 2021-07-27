@@ -537,11 +537,6 @@ namespace System.Reactive.Kql
             throw new NotImplementedException();
         }
 
-        public override T VisitRenderNameList(RenderNameList node)
-        {
-            throw new NotImplementedException();
-        }
-
         public override T VisitRenderOperator(RenderOperator node)
         {
             throw new NotImplementedException();

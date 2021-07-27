@@ -35,6 +35,11 @@ namespace System.Reactive.Kql
             throw new NotImplementedException();
         }
 
+        public override List<RxKqlScalarValue> VisitEvaluateSchemaClause(EvaluateSchemaClause node)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<RxKqlScalarValue> VisitParseWhereOperator(ParseWhereOperator node)
         {
             throw new NotImplementedException();
@@ -77,9 +82,19 @@ namespace System.Reactive.Kql
             throw new NotImplementedException();
         }
 
+        public override List<RxKqlScalarValue> VisitNameReferenceList(NameReferenceList node)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<RxKqlScalarValue> VisitExpressionStatement(ExpressionStatement node)
         {
             return node.Expression.Accept(this);
+        }
+
+        public override List<RxKqlScalarValue> VisitContextualDataTableExpression(ContextualDataTableExpression node)
+        {
+            throw new NotImplementedException();
         }
 
         public override List<RxKqlScalarValue> VisitScanOperator(ScanOperator node)
@@ -157,6 +172,11 @@ namespace System.Reactive.Kql
             throw new NotImplementedException();
         }
 
+        public override List<RxKqlScalarValue> VisitHasAllExpression(HasAllExpression node)
+        {
+            throw new NotImplementedException();
+        }
+
         public override List<RxKqlScalarValue> VisitMaterializedViewCombineExpression(MaterializedViewCombineExpression node)
         {
             throw new NotImplementedException();
@@ -183,6 +203,11 @@ namespace System.Reactive.Kql
         private int NamelessCounter = 0;
 
         public override RxKqlScalarValue VisitHasAnyExpression(HasAnyExpression node)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override RxKqlScalarValue VisitHasAllExpression(HasAllExpression node)
         {
             throw new NotImplementedException();
         }
@@ -273,6 +298,11 @@ namespace System.Reactive.Kql
             throw new NotImplementedException();
         }
 
+        public override RxKqlScalarValue VisitEvaluateSchemaClause(EvaluateSchemaClause node)
+        {
+            throw new NotImplementedException();
+        }
+
         public override RxKqlScalarValue VisitParseWhereOperator(ParseWhereOperator node)
         {
             throw new NotImplementedException();
@@ -304,6 +334,16 @@ namespace System.Reactive.Kql
         }
 
         public override RxKqlScalarValue VisitProjectReorderOperator(ProjectReorderOperator node)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override RxKqlScalarValue VisitNameReferenceList(NameReferenceList node)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override RxKqlScalarValue VisitContextualDataTableExpression(ContextualDataTableExpression node)
         {
             throw new NotImplementedException();
         }
