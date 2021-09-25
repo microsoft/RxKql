@@ -565,7 +565,7 @@ namespace System.Reactive.Kql
             Stopwatch evaluateStopwatch = Stopwatch.StartNew();
 
             // Pass over the table name, at least one pipe char [|] is required.
-            Input.KustoQuery(Query.Substring(Query.IndexOf('|') + 1).Trim())
+            var disp = Input.KustoQuery(Query.Substring(Query.IndexOf('|') + 1).Trim())
                 .Subscribe(e =>
                 {
                     result = new KqlOutput
@@ -581,6 +581,8 @@ namespace System.Reactive.Kql
             Input.OnNext(dict);
             IncrementEvaluationCount();
             IncrementEvaluationTotalMilliseconds(evaluateStopwatch.Elapsed.TotalMilliseconds);
+
+            disp.Dispose();
 
             return result;
         }
