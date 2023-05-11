@@ -563,15 +563,14 @@ namespace System.Reactive.Kql
 
         public dynamic Extend(IDictionary<string, object> instance, bool returnOnlyNew = false)
         {
-            var result = new ExpandoObject();
-            var inst = instance;
-
-            if (!returnOnlyNew)
+            IDictionary<string,object> result;
+            if(returnOnlyNew)
             {
-                foreach (string name in inst.Keys)
-                {
-                    ((IDictionary<string, object>) result).Add(name, inst[name]);
-                }
+                result = new ExpandoObject();
+            }
+            else
+            {
+                result = instance;
             }
 
             foreach (var exp in Expressions)
