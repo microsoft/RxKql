@@ -1,15 +1,12 @@
 # [Rx.Kql] Nuget package
 
-## Package Source
-http://wanuget/Official/nuget/ 
-
 ## Standing query in Kusto language
 
 This document and code assumes the reader is familiar with **L**anguage **IN**tegrated **Q**uery (LINQ) and Reactive Extensions (**Rx.Net**). 
 
 LINQ and Rx are old and stable .Net framework pieces described in chapters 10-11 in the book  [Programming C# 5.0](http://shop.oreilly.com/product/0636920024064.do). Also good books are [LINQ Pocket Reference](http://shop.oreilly.com/product/9780596519254.do) and [Programming Reactive Extensions and LINQ](http://www.apress.com/us/book/9781430237471) . Online book is [http://introtorx.com](http://introtorx.com)
 
-Specifically terms like "real-time" here mean **milliseconds** of latency and implementation based on push-callbacks (IObservable). 
+Specifically terms like "real-time" here mean **microseconds** of latency and implementation based on push-callbacks (IObservable). 
 
 
 ## About the Rx.Kql class library
