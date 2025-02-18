@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35728.132 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{76E27F7C-8F73-4922-B520-20126D7C78B9}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MouseMove", "Samples\MouseM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiQuery", "Samples\MultiQuery\MultiQuery.csproj", "{0F9AAEDC-07CF-4A7F-A4F6-021A774CFA6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetry.RealTimeKQL", "OpenTelemetry.RealTimeKQL\OpenTelemetry.RealTimeKQL.csproj", "{68117372-9036-46C0-85C8-67DDA1540F63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTelemetry", "Samples\ServiceTelemetry\ServiceTelemetry.csproj", "{C4A68289-5D5C-4CD2-8D60-42C57D7406F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{0F9AAEDC-07CF-4A7F-A4F6-021A774CFA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F9AAEDC-07CF-4A7F-A4F6-021A774CFA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F9AAEDC-07CF-4A7F-A4F6-021A774CFA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68117372-9036-46C0-85C8-67DDA1540F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68117372-9036-46C0-85C8-67DDA1540F63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68117372-9036-46C0-85C8-67DDA1540F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68117372-9036-46C0-85C8-67DDA1540F63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A68289-5D5C-4CD2-8D60-42C57D7406F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A68289-5D5C-4CD2-8D60-42C57D7406F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A68289-5D5C-4CD2-8D60-42C57D7406F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A68289-5D5C-4CD2-8D60-42C57D7406F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +59,7 @@ Global
 		{8A1AD66E-16EE-4C17-8059-9BB9F60EFDAC} = {76E27F7C-8F73-4922-B520-20126D7C78B9}
 		{B04415E1-CBEA-4B56-AE8E-C6D02A476651} = {2E97910C-34A0-434B-A649-68F27C5B1FF0}
 		{0F9AAEDC-07CF-4A7F-A4F6-021A774CFA6C} = {2E97910C-34A0-434B-A649-68F27C5B1FF0}
+		{C4A68289-5D5C-4CD2-8D60-42C57D7406F6} = {2E97910C-34A0-434B-A649-68F27C5B1FF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3805DB70-EC3F-4D3C-A7CE-FC89532607FC}
